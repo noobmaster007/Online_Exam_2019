@@ -99,23 +99,23 @@ background-color:#202020;
 .footer a
 {
 margin:25px;
-color:white;
+color:rgb(235, 25, 25);
 text-decoration:none;
 font: 15px "Century Gothic", "Times Roman", sans-serif;
 
 }
 .footer a:hover
 {
+
 text-decoration:none;
 color:#9acd32;
 border-top:2px solid;
 border-color:orange;
 
 }
-
 .box
 {
-padding:9px;
+padding:13.5px;
 }
 hr{
 color:#030303;
