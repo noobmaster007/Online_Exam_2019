@@ -225,7 +225,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 		<h4 style="font-family:'typo' ">pranaykarmakar9@gmail.com</h4>
 		<h4 style="font-family:'typo' ">Siliguri Institute of Technology(SIT), Naxalbari</h4></div></div>
 		</p>
-      </div> <!--div end-->
+    </div> <!--div end- ->
 
     <div class="modal-body"> <!--div start-->
         <p>
