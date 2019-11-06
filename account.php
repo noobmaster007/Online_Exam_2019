@@ -135,7 +135,7 @@
 		<a href="https://www.linkedin.com/in/pranay-karmakar-6b1a82155" target="_blank" style="color:#202020; font-family: 'Lato', sans-serif; font-size:18px" title="Find on LinkedIn">Pranay Karmakar</a>
 		<h4 style="color:#202020; font-family:'typo' ;font-size:16px" class="title1">+91 7602458272</h4>
 		<h4 style="font-family:'typo' ">pranaykarmakar9@gmail.com</h4>
-		<h4 style="font-family:'typo' ">Siliguri Institute of Technology, Siliguri</h4></div></div>
+		<h4 style="font-family:'typo' ">Siliguri Institute of Technology(SIT),Naxalbari </h4></div></div>
 		</p>
       </div> <!--div end-->
 
