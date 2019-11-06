@@ -3,7 +3,7 @@ body
 overflow-x:hidden;
 width:100%;
 font: 15px "Century Gothic", "Times Roman", sans-serif;
-background:#eee;
+background:rgba(149, 157, 202, 0.932);
 min-height:550px;
 background-attachment:fixed;
 }
