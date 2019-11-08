@@ -1,11 +1,11 @@
---COPY THE CODE AND PASTE IT ON SQL TAB
+-- COPY THE CODE AND PASTE IT ON SQL TAB
 
 CREATE DATABASE onlineproject;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET TIME_ZONE = "+00:00";
 
---table structure for the `admin`
+-- table structure for the `admin`
 
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE `admin` (
   `password` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---INSERT data for table `admin`
+-- INSERT data for table `admin`
 
 INSERT INTO `admin` (`admin_id`, `email`, `password`) VALUES
 (1,'gablusarkar91@gmail.com','admin'),
@@ -21,24 +21,24 @@ INSERT INTO `admin` (`admin_id`, `email`, `password`) VALUES
 (3,'pranaykarmakar9@gmail.com','admin'),
 (4,'bishalchanda2110@gmail.com','admin');
 
--------------------------------------------------------------------------
---table structure for `answer`
+-- -----------------------------------------------------------------------
+-- table structure for `answer`
 
 CREATE TABLE `answer` (
-  `qid` text NOT NULL, --qid = question id
-  `ansid` text NOT NULL --ansid = answer id
+  `qid` text NOT NULL, -- qid = question id
+  `ansid` text NOT NULL -- ansid = answer id
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---insert data for table `answer`
+-- insert data for table `answer`
 
 INSERT INTO `answer` (`qid`, `ansid`) VALUES
 ('',''),
 ('',''),
 ('','');
 
------------------------------------------------------------
+-- ---------------------------------------------------------
 
---table structure for table `options`
+-- table structure for table `options`
 
 CREATE TABLE `options` (
   `qid` varchar(50) NOT NULL,
@@ -46,15 +46,15 @@ CREATE TABLE `options` (
   `optionid` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---inserting data for table 'option'
+-- inserting data for table 'option'
 
 INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
 ('','',''),
 ('','','');
 
-------------------------------------------------------------------
+-- ----------------------------------------------------------------
 
---table structure for table 'questions'
+-- table structure for table 'questions'
 
 CREATE TABLE `questions` (
   `eid` text NOT NULL,
@@ -64,14 +64,14 @@ CREATE TABLE `questions` (
   `sn` int(11) not null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---inserting data into table 'questions'
+-- inserting data into table 'questions'
 
 INSERT INTO `questions` (`eid`,`qid`,`qns`,`choice`,`sn`) VALUES 
-('','','','','');
+('','','',0,0);
 
-------------------------------------------------------------------------
+-- ----------------------------------------------------------------------
 
---table structure for table `quiz`
+-- table structure for table `quiz`
 
 CREATE TABLE `quiz` (
   `eid` text not null,
@@ -83,34 +83,35 @@ CREATE TABLE `quiz` (
   `date` timestamp not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---inserting data for table `quiz`
+-- inserting data for table `quiz`
 
 INSERT INTO `quiz` (`eid`,`title`,`right`,`wrong`,`total`,`time`,`date`) VALUES
-()
+('','',0,0,0,0,'');
 
------------------------------------------------------------------------
+-- ---------------------------------------------------------------------
 
+--
+-- table structure for table 'rank'
+--
 
---table structure for table 'rank'
-
-CREATE TABLE `rank` (
+create table `rank` (
   `email` varchar(50) not null,
   `score` int(11) not null,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
---insert data for table `rank`
+-- insert data for table `rank`
 
 INSERT INTO `rank` (`email`, `score`, `time`) VALUES
-('','','');
+('',0,'');
 
--------------------------------------------------------------------
+-- -----------------------------------------------------------------
 
 
---table structure for table `user`
+-- table structure for table `user`
 
-CREATE TABLE `user` (
+create table `user` (
   `name` varchar(50) NOT NULL,
   `gender` varchar(5) NOT NULL,
   `college` varchar(100) NOT NULL,
@@ -119,19 +120,19 @@ CREATE TABLE `user` (
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---insert data for table `user`
+-- insert data for table `user`
  
 INSERT INTO `user` (`name`, `gender`, `college`, `email`, `mob`, `password`) VALUES
-('','','','','','');
+('','','','',0,'');
 
 
-------------------------------------------------------------------------
+-- ----------------------------------------------------------------------
 
---indexes for table 'admin'
+-- indexes for table 'admin'
 
 ALTER TABLE `admin` ADD PRIMARY KEY (`admin_id`);
 
---indexes for table 'user'
+-- indexes for table 'user'
 
 ALTER TABLE `user` ADD PRIMARY KEY (`email`);
 
