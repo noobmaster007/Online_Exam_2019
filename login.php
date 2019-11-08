@@ -11,7 +11,7 @@ $password = $_POST['password'];
 
 $email = stripslashes($email); //it will strip the backslashes. to prevent SQL injection
 $email = addslashes($email); //used to add backslashes with data, to keep database user-friendly
-
+//this is for password purpose
 $password = stripslashes($password); 
 $password = addslashes($password);
 
