@@ -36,7 +36,7 @@ CREATE TABLE `options` (
   `option` varchar(5000) NOT NULL,
   `optionid` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;INSERT INTO `questions` (`eid`, `qid`, `qns`, `choice` ) VALUES
-('  ),
+(' '),
 (' ');
 
 --table structure for table `rank`
