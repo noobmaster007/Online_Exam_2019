@@ -150,6 +150,11 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
     
   </div>
 </div>
+<?php
+if (@$_GET['w']) {
+      echo '<p style="color:red;font-size:15px;">'.@$_GET['w'];
+}
+?>
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-12 control-label" for=""></label>
