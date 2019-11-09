@@ -1,6 +1,6 @@
 <?php
 include_once ('dbcon.php');
-$ref = @$_GET['q'];
+$ref = @$_GET['q']; //first value of q=index.php comes from the index page,
 $email = $_POST['uname'];
 $password = $_POST['password'];
 
@@ -21,13 +21,16 @@ if ($rows==1) {
         //create sessions, so we know the user logged in.. 
         //they act as a cookies, remembers the credential data on the localserver.
     }
+    
     $_SESSION['name']='admin';
     $_SESSION['password']='admin';
     $_SESSION['email']=$email;
     header('location:dash.php?q=0');
 }
 else { //if the login credential doesn't match, then this will execute.
-    header('location:$ref?w=Warning = Access Denied!');
+    header("location:$ref?w=Warning = Access Denied!");
+    // if the password is incorrect in the admin login page, then it shows a msg,
+    //then it redirects to index page.. that's why we use ref variable, in location.. 
 }
 
 ?>

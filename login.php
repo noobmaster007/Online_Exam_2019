@@ -5,7 +5,7 @@ if (isset($_SESSION['email'])) {
 }
 
 include_once('dbcon.php');
-//$ref=@$_GET['q'];
+$ref=@$_GET['q'];       //same as admin.php
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -31,7 +31,7 @@ if ($rows==1) {
     header('location:account.php?q=1');
 }
 else {
-    header('location:$ref?w=Wrong Username and Password!');
+    header("location:$ref?w=Wrong Username and Password!"); //same as admin.php
 }
 
 ?>

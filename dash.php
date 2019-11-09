@@ -42,7 +42,7 @@ session_start();
 
 $email = $_SESSION['email'];
 if (!(isset($_SESSION['email']))) { //if there is no email is match in database then go back to index.php
-  header('location:index.php');
+  header('location:');  //index.php 
 }
 else {  //if yes, then print the name of the user in dash.php
   $name = $_SESSION['name'];
