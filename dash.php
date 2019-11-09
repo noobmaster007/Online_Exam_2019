@@ -36,7 +36,24 @@ $(function () {
 <div class="row">
 <div class="col-lg-6">
 <span class="logo">Online Test</span></div>
+<?php
+include_once('dbcon.php');
+session_start();
 
+$email = $_SESSION['email'];
+if (!(isset($_SESSION['email']))) { //if there is no email is match in database then go back to index.php
+  header('location:index.php');
+}
+else {  //if yes, then print the name of the user in dash.php
+  $name = $_SESSION['name'];
+
+echo '<span class="pull-right top title1">
+            <span class="log1">
+            <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            Hello, <a href="#"> class="log log1">'.$name.'</a>&nbsp;&nbsp;<a href="logout.php?" class="log">
+            <span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></span>';
+}
+?>
 
 </div></div>
 <!-- admin start-->

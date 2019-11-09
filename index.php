@@ -230,9 +230,9 @@ if (@$_GET['w']) {
 		<h4 style="font-family:'typo' ">pranaykarmakar9@gmail.com</h4>
 		<h4 style="font-family:'typo' ">Siliguri Institute of Technology(SIT), Naxalbari</h4></div></div>
 		</p>
-    </div> <!--div end- ->
+    </div> <!--div end-->
 
-    <div class="modal-body"> <!--div start-->
+    <div class="modal-body">  <!--div start--> 
         <p>
 		<div class="row">
 		<div class="col-md-4">
