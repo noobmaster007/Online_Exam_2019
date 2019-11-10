@@ -1,37 +1,6 @@
 # Online_Exam_2019
 
-  ____        _ _            
- / __ \      | (_)           
-| |  | |_ __ | |_ _ __   ___ 
-| |  | | '_ \| | | '_ \ / _ \
-| |__| | | | | | | | | |  __/
- \____/|_| |_|_|_|_| |_|\___|
-                             
-                             
-
- ______                     _             _   _             
-|  ____|                   (_)           | | (_)            
-| |__  __  ____ _ _ __ ___  _ _ __   __ _| |_ _  ___  _ __  
-|  __| \ \/ / _` | '_ ` _ \| | '_ \ / _` | __| |/ _ \| '_ \ 
-| |____ >  < (_| | | | | | | | | | | (_| | |_| | (_) | | | |
-|______/_/\_\__,_|_| |_| |_|_|_| |_|\__,_|\__|_|\___/|_| |_|
-                                                            
-                                                            
-
-
-
-
-  _____           _                 
- / ____|         | |                
-| (___  _   _ ___| |_ ___ _ __ ___  
- \___ \| | | / __| __/ _ \ '_ ` _ \ 
- ____) | |_| \__ \ ||  __/ | | | | |
-|_____/ \__, |___/\__\___|_| |_| |_|
-         __/ |                      
-        |___/                       
-
-
-Project Info : Minor Project 5th Semester
-College : Siliguri Institute of Technology
-Mentor : Debarati Mitra
-Members : Sudipta Gupta, Pratip Sarkar, Pranay Karmakar, Bishal Chanda, Sakila Sultana
+# Project Info : Minor Project 5th Semester
+# College : Siliguri Institute of Technology
+# Mentor : Debarati Mitra
+# Members : Sudipta Gupta, Pratip Sarkar, Pranay Karmakar, Bishal Chanda, Sakila Sultana
