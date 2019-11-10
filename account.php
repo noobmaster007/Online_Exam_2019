@@ -5,11 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Account</title>
+<!-- Downloaded minified css files of bootstrap[offline] -->
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
- <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
+ <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/> 
+ <!-- Downloaded minified css files of bootstrap[offline] -->   
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
+  <!-- Download JS of Bootstrap[offline] -->
  <script src="js/jquery.js" type="text/javascript"></script>
+  <!-- Download JS of Bootstrap[offline] -->
 <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
  
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
@@ -79,22 +83,21 @@
 <!--Footer start-->
 <div class="row footer">
 <div class="col-md-3 box">
-<a href="" target="">About us</a>
+<a href="https://github.com/noobmaster007/Online_Exam_2019" target="_blank">Github Page</a>
 </div>
 <div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
 <div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#developers">Developers</a>
 </div>
-</div>
-
+<div class="col-md-3 box">
 <!-- Modal For Developers-->
 <div class="modal fade title1" id="developers">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="btn-primary" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Developers</span></h4>
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:blue">Developers</span></h4>
       </div>
 	  
       <div class="modal-body"> <!--div start-->
@@ -177,7 +180,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">LOGIN</span></h4>
+        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">LOGIN</span></h4>
       </div>
       <div class="modal-body title1">
 <div class="row">
@@ -185,10 +188,11 @@
 <div class="col-md-6">
 <form role="form" method="" action="">
 <div class="form-group">
-<input type="text" name="uname" maxlength="20"  placeholder="Admin user id" class="form-control"/> 
+<input type="email" name="uname" maxlength="50"  placeholder="Admin user id" class="form-control" required/> 
 </div>
 <div class="form-group">
-<input type="password" name="password" maxlength="15" placeholder="Password" class="form-control"/>
+<input type="password" name="password" id="myInput" maxlength="15" placeholder="Password" class="form-control" required/>
+<input type="checkbox" onclick="myFunction()">Show Password
 </div>
 <div class="form-group" align="center">
 <input type="submit" name="login" value="Login" class="btn btn-primary" />
@@ -203,4 +207,14 @@
 
 
 </body>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </html>

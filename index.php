@@ -3,11 +3,15 @@
 
 
 <title>Home</title>
-<link  rel="stylesheet" href="css/bootstrap.min.css"/>
- <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
+<!-- Downloaded minified css files of bootstrap[offline] -->
+<link  rel="stylesheet" href="css/bootstrap.min.css"/> 
+ <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+     <!-- Downloaded minified css files of bootstrap[offline] -->
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
+ <!-- Download JS of Bootstrap[offline] -->
   <script src="js/jquery.js" type="text/javascript"></script>
+  <!-- Download JS of Bootstrap[offline] -->
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
@@ -32,10 +36,10 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 <!--sign in modal start-->
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
-    <div class="modal-content title1">
+    <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title title1"><span style="color:orange">Log In</span></h4>
+        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">User Log In</span></h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" action="" method="POST">
@@ -46,7 +50,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 <div class="form-group">
   <label class="col-md-3 control-label" for="email"></label>  
   <div class="col-md-6">
-  <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email">
+  <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email" required>
     
   </div>
 </div>
@@ -56,8 +60,8 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 <div class="form-group">
   <label class="col-md-3 control-label" for="password"></label>
   <div class="col-md-6">
-    <input id="password" name="password" placeholder="Enter your Password" class="form-control input-md" type="password">
-    
+    <input id="password" name="password" placeholder="Enter your Password" class="form-control input-md" type="password" required>
+
   </div>
 </div>
 
@@ -172,7 +176,7 @@ if (@$_GET['w']) {
 <!--FOOTER-->
 <div class="row footer">
 <div class="col-md-3 box">
-<a href="" target="">About us</a>
+<a href="https://github.com/noobmaster007/Online_Exam_2019" target="_blank">Github Page</a>
 </div>
 <div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
@@ -187,7 +191,7 @@ if (@$_GET['w']) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Developers</span></h4>
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:blue">Developers</span></h4>
       </div>
 	  
       <div class="modal-body"> <!--div start-->
@@ -270,7 +274,7 @@ if (@$_GET['w']) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">LOGIN</span></h4>
+        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">LOGIN</span></h4>
       </div>
       <div class="modal-body title1">
 <div class="row">
@@ -278,10 +282,11 @@ if (@$_GET['w']) {
 <div class="col-md-6">
 <form role="form" method="post" action="">
 <div class="form-group">
-<input type="text" name="uname" maxlength="50"  placeholder="Admin user id" class="form-control"/> 
+<input type="email" name="uname" maxlength="50"  placeholder="Admin user id" class="form-control" required/> 
 </div>
 <div class="form-group">
-<input type="password" name="password" maxlength="15" placeholder="Password" class="form-control"/>
+<input type="password" name="password" maxlength="15" id="myInput" placeholder="Password" class="form-control" required/>
+<input type="checkbox" onclick="myFunction()">Show Password
 </div>
 <div class="form-group" align="center">
 <input type="submit" name="login" value="Login" class="btn btn-primary" />
@@ -299,4 +304,14 @@ if (@$_GET['w']) {
 
 
 </body>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 </html>
