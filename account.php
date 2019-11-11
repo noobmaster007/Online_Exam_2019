@@ -39,8 +39,8 @@ include_once('dbcon.php');
       <span class="logo">Online Exam</span></div>
         <div class="col-md-4 col-md-offset-2">
                   <?php
-                  include('dbcon.php');
-                  session_start();
+                    include('dbcon.php');
+                    session_start();
 
                   if (!(isset($_SESSION['email']))) {
                     header("location:");
