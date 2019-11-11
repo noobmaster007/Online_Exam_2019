@@ -108,6 +108,24 @@ INSERT INTO `rank` (`email`, `score`, `time`) VALUES
 
 -- -----------------------------------------------------------------
 
+-- table structure for HISTORY
+
+CREATE TABLE `history` (
+  `email` varchar(50) not null,
+  `eid` text not null,
+  `score` int(11) not null,
+  `quescount` int(11) not null,
+  `right` int(11) not null,
+  `wrong` int(11) not null,
+  `date` timestamp not null DEFAULT CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- inserting data into history table
+
+INSERT INTO `history` (`email`,`eid`,`score`,`quescount`,`right`,`wrong`,`date`) values 
+('','','','','','','');
+
+ -- ------------------------------------------------------------------------------------
 
 -- table structure for table `user`
 

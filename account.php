@@ -111,7 +111,7 @@ if (@$_GET['q']==1) {
           <td></td>
           </tr>'; // table format in html tags
 
-  $sn = 1; //serial no count
+  $c = 1; //serial no count
 
   while ($row = mysqli_fetch_array($result)) {
         
@@ -119,49 +119,129 @@ if (@$_GET['q']==1) {
     $total = $row['total'];
     $right = $row['right'];
     $time = $row['time'];
-    $eid = $row['eid'];
+    $eid = $row['eid']; //eid of quiz
 
     $query1 = "SELECT score FROM history WHERE eid='$eid' and email='$email'";  
-    //checks in this history table whether the existing user attempted it or not
+    //email = checks in this history table whether the existing user attempted it or not
+    //eid = which topic is attempted by user
+
     $reslt = mysqli_query($connection,$query1) or die('Fatal Error');
 
     $rowcount = mysqli_num_rows($reslt);
     if ($rowcount == 0) { //checks if the user previously attempt the quiz or not, if no then execute this
       echo '<tr>
-            <td>'.$sn++.'</td>
+            <td>'.$c++.'</td>
             <td>'.$title.'</td>
             <td>'.$total.'</td>
             <td>'.$right*$total.'</td>
             <td>'.$time.'&nbsp;min</td>
-            
-            <td><b><a href="account.php?q=quiz&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" 
+          
+            <td><b><a href="account.php?q=quiz&step=2&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" 
             style="margin:1px;background:#2471A3">&nbsp;<span class="title1"><b>START</b></span></a></b></td>
             </tr>';   //this is for QUIZ START button
     }
     else {  //if yes then execute this
       echo '<tr style="color:#27AE60">
-            <td>'.$sn++.'</td>
+            <td>'.$c++.'</td>
             <td>'.$title.'<span class="glyphicon glyphicon-ok"></span></td>
             <td>'.$total.'</td>
             <td>'.$right*$total.'</td>
             <td>'.$time.'</td>
             
             <td><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-repeat"></span>&nbsp;<span class="title1"><b>RESTART</b></span></a></td>
-            </tr>';
+            </tr>'; //this is for quiz RESTART button
     }
   }
-  $sn=0;
+  $c=0;
   echo '</table></div></div>';
 }
 ?>
 
+<!-- code of timer start -->
 
-
+<!-- timer end here -->
 
 <!--home closed-->
 
 <!--quiz start-->
+<?php
+if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START button url
+  $eid = @$_GET['eid']; //fetched from history table
+  $sn = @$_GET['n'];  //fetched from start button url
+  $total = @$_GET['t']; //fetched from start button url
 
+  //fetch eid of the questions of different topic
+  $quesquery = "SELECT * FROM questions WHERE eid = '$eid' and sn = '$sn'";
+  $q = mysqli_query($connection,$quesquery);
+
+  echo '<div class="panel" style="margin:5%">';
+
+  while ($row=mysqli_fetch_array($quesquery)) { 
+    //fetch from the database = questions
+   $qns = $row['qns'];  
+   $qid = $row['qid'];
+   //print the questions with serial no.
+   echo '<b><Questions &nbsp;'.$sn.'&nbsp;::<br>'.$qns.'</b><br><br>';
+  }
+
+  $optionquery = "SELECT * FROM options WHERE qid = '$qid'";
+  $q = mysqli_query($connection,$optionquery);
+  echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&total='.$total.'&qid='.$qid.'" method="POST" class="form-horizontal">
+  <br>';  //form for select option
+
+  while ($row=mysqli_fetch_array($optionquery)) {
+    
+    $option = $row['option'];
+    $optionid = $row['optionid'];
+      //prints the options
+    echo '<input type="radio" name="ans" value="'.$optionid.'">'.$option.'<br><br>';
+  }
+
+  echo '<br><button type="submit" class="btn btn-primary">&nbsp;Next Question</button>
+  
+  </form></div>';   //for next button
+}
+
+//RESULT DISPLAY
+if (@$_GET['q'] == 'result' && @$_GET['eid']) {
+  
+  $eid=@$_GET['eid']; //pick eid value from url
+
+  $q = mysqli_query($connection,"SELECT * FROM history WHERE eid='$eid' and email='$email'")or die('Fatal Error');
+  echo '<div class="panel">
+  <center><h1 class="title" style="color:#D4AC0D">Result</h1><center><br>
+  <table class="table table-striped title1" style="font-size:10px;font-weight:1000;">';
+
+  while ($row=mysqli_fetch_array($q)) {
+    
+    $score = $row['score'];
+    $wrong=$row['wrong'];
+    $right=$row['sahi'];
+    $qa=$row['level'];  //total questions
+
+    echo '<tr style="color:#1C2833">
+          <td>Total Questions</td>
+          <td>'.$qa.'</td>
+          </tr>
+          
+          <tr style="color:#229954">
+          <td>Right Answer&nbsp;<span class="glyphicon glyphicon-ok-circle"></span></td>
+          <td>'.$right.'</td>
+          </tr>
+          
+          <tr style="color:red">
+          <td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle"></span></td>
+          <td>'.$wrong.'</td>
+          </tr>
+
+          <tr style="color:#1C2833">
+          <td>Score&nbsp;<span class="glyphicon glyphicon-star"></span></td>
+          <td>'.$score.'</td>
+          </tr>';
+  }
+  
+}
+?>
 <!--quiz end-->
 
 
