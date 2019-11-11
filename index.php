@@ -177,12 +177,12 @@ if (@$_GET['w']) {
 <!--FOOTER-->
 <div class="row footer">
 <div class="col-md-3 box">
-<a href="https://github.com/noobmaster007/Online_Exam_2019" target="_blank">Github Page</a>
+<a href="https://github.com/noobmaster007/Online_Exam_2019" target="_blank"><b>Github Page</b></a>
 </div>
 <div class="col-md-3 box">
-<a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
+<a href="#" data-toggle="modal" data-target="#login"><b>Admin Login</b></a></div>
 <div class="col-md-3 box">
-<a href="#" data-toggle="modal" data-target="#developers">Developers</a>
+<a href="#" data-toggle="modal" data-target="#developers"><b>Developers</b></a>
 </div>
 <div class="col-md-3 box">
 
