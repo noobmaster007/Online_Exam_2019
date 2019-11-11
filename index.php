@@ -164,7 +164,7 @@ if (@$_GET['w']) {
 <div class="form-group">
   <label class="col-md-12 control-label" for=""></label>
   <div class="col-md-12"> 
-    <input  type="submit" class="sub" value="REGISTER HERE" class="btn btn-primary"/>
+    <b><input  type="submit" class="sub" value="REGISTER HERE" class="btn btn-primary"/></b>
   </div>
 </div>
 
