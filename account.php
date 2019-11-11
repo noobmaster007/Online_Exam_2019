@@ -54,7 +54,7 @@ include_once('dbcon.php');
                     <span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                     >&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span><a href="account.php?q=1" class="log log1">'.$name.'</a>
                     &nbsp;&nbsp;<a href="" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
-                                    //(logout.php?q=index.php)here the value of q = index.php this value goes to logout.php
+                   //(logout.php?q=index.php)here the value of q = index.php this value goes to logout.php
                   }
                   ?>
         </div>
@@ -98,7 +98,7 @@ include_once('dbcon.php');
 if (@$_GET['q']==1) {
   
   $query = "SELECT * FROM quiz ORDER BY date DESC";
-  $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database
+  $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database table
 
   echo '<div class="panel"><div class="table-responsive">
           <table class="table table-striped title1">
