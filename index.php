@@ -39,7 +39,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 align="center"> <h4 class="modal-title"><span style="color:blue;font-family:'typo' "><User Log In</span></h4>
+         <h4 class="modal-title"><span style="color:blue;font-family:'typo' "><User Log In</span></h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" action="" method="POST">
