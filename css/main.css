@@ -3,7 +3,7 @@ body
 overflow-x:hidden;
 width:100%;
 font: 15px "Century Gothic", "Times Roman", sans-serif;
-background:rgba(149, 157, 202, 0.932);
+background:rgba(187, 233, 241, 0.932);
 
 min-height:550px;
 background-attachment:fixed;
@@ -29,7 +29,7 @@ min-height:535px;
 	}
 
 .panel{
-border-color:#eee;
+border-color:rgb(150, 60, 60);
 margin:40px;
 padding:20px;
 font: 15px "Century Gothic", "Times Roman", sans-serif;
@@ -42,7 +42,7 @@ font-family:'typo';
 
 .header
 {
-background:#202020;
+background:#f593b8;
 height:70px;
 }
 .logo
@@ -66,7 +66,7 @@ font-size:20px;
 {
 width:90px;
 color:#f3e9e9;
-background:#7e87da;
+background:#8f14c0;
 font-size:15px;
 height:35px;
 margin:20px;
@@ -78,7 +78,7 @@ width:100px;
 .sub
 {
 width:100%;
-background-color:#f9feff;
+background-color:hsl(57, 49%, 65%);
 font-size:20px;
 padding:2px;
 margin-top:15px;
@@ -94,13 +94,13 @@ color:#fff;
 font-size:15px;
 text-align:center;
 border-top:1px solid;
-border-color:#323232;
-background-color:#202020;
+border-color:#84e98d;
+background-color:#0ae288;
 }
 .footer a
 {
 margin:25px;
-color:rgb(235, 25, 25);
+color:rgb(14, 16, 19);
 text-decoration:none;
 font: 15px "Century Gothic", "Times Roman", sans-serif;
 
@@ -109,9 +109,9 @@ font: 15px "Century Gothic", "Times Roman", sans-serif;
 {
 
 text-decoration:none;
-color:#9acd32;
+color:#1e0c88;
 border-top:2px solid;
-border-color:orange;
+border-color:rgb(248, 4, 4);
 
 }
 .box
@@ -128,7 +128,7 @@ margin-top:20px;
 .log1
 {
 font: 15px 'Ubuntu', sans-serif;
-color:orange;
+color:rgb(24, 22, 20);
 margin-left:10px;
 }
 
@@ -137,15 +137,15 @@ margin-left:10px;
 margin:10px;
 margin-right:60px;
 margin-left:5px;
-color:orange;
+color:rgb(22, 22, 20);
 text-decoration:none;
 font-size:20px;
 font-size:15px;
 }
 .log:hover
 {
-color:#9acd32;
+color:#0f0758;
 border-top:2px solid;
-border-color:orange;
+border-color:rgb(20, 20, 19);
 text-decoration:none;
 }
