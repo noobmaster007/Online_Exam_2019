@@ -49,7 +49,7 @@ height:70px;
 {
 font-family:'typo';
 font-size:35px;
-color:#7e87da;
+color:#cc2a4d;
 margin:15px;
 }
 
@@ -65,8 +65,8 @@ font-size:20px;
 .sub1
 {
 width:90px;
-color:#f3e9e9;
-background:#8f14c0;
+color:#fffbfb;
+background:#ad44d6;
 font-size:15px;
 height:35px;
 margin:20px;
@@ -128,7 +128,7 @@ margin-top:20px;
 .log1
 {
 font: 15px 'Ubuntu', sans-serif;
-color:rgb(24, 22, 20);
+color:rgb(126, 63, 1);
 margin-left:10px;
 }
 
