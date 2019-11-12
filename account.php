@@ -39,8 +39,8 @@ include_once('dbcon.php');
       <span class="logo">Online Exam</span></div>
         <div class="col-md-4 col-md-offset-2">
                   <?php
-                  include('dbcon.php');
-                  session_start();
+                    include('dbcon.php');
+                    session_start();
 
                   if (!(isset($_SESSION['email']))) {
                     header("location:");
@@ -54,7 +54,7 @@ include_once('dbcon.php');
                     <span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                     >&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span><a href="account.php?q=1" class="log log1">'.$name.'</a>
                     &nbsp;&nbsp;<a href="" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
-                                    //(logout.php?q=index.php)here the value of q = index.php this value goes to logout.php
+                   //(logout.php?q=index.php)here the value of q = index.php this value goes to logout.php
                   }
                   ?>
         </div>
@@ -98,7 +98,7 @@ include_once('dbcon.php');
 if (@$_GET['q']==1) {
   
   $query = "SELECT * FROM quiz ORDER BY date DESC";
-  $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database
+  $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database table
 
   echo '<div class="panel"><div class="table-responsive">
           <table class="table table-striped title1">
@@ -268,7 +268,7 @@ if (@$_GET['q']==1) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">LOGIN</span></h4>
+        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">LOG IN</span></h4>
       </div>
       <div class="modal-body title1">
 <div class="row">

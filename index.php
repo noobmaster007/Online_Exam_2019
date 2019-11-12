@@ -28,9 +28,9 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 
 <body>
 <div class="header">
-<div class="row">
-<div class="col-lg-6">
-<span class="logo">Online Exam</span></div>
+   <div class="row">
+   <div class="col-lg-6">
+<span class="logo">Online Examination</span></div>
 <div class="col-md-2 col-md-offset-4">
 <a href="#" class="pull-right btn sub1" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Signin</b></span></a></div>
 <!--sign in modal start-->
@@ -139,6 +139,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 
 
 <!-- Text input-->
+
 <div class="form-group">
   <label class="col-md-12 control-label" for="password"></label>
   <div class="col-md-12">
@@ -148,8 +149,8 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 </div>
 
 <div class="form-group">
-  <label class="col-md-12control-label" for="cpassword"></label>
-  <div class="col-md-12">
+    <label class="col-md-12control-label" for="cpassword"></label>
+        <div class="col-md-12">
     <input id="cpassword" name="cpassword" placeholder="Confirm Password" class="form-control input-md" type="password">
     
   </div>
@@ -163,7 +164,7 @@ if (@$_GET['w']) {
 <div class="form-group">
   <label class="col-md-12 control-label" for=""></label>
   <div class="col-md-12"> 
-    <input  type="submit" class="sub" value="REGISTER HERE" class="btn btn-primary"/>
+    <b><input  type="submit" class="sub" value="REGISTER HERE" class="btn btn-primary"/></b>
   </div>
 </div>
 
@@ -176,12 +177,12 @@ if (@$_GET['w']) {
 <!--FOOTER-->
 <div class="row footer">
 <div class="col-md-3 box">
-<a href="https://github.com/noobmaster007/Online_Exam_2019" target="_blank">Github Page</a>
+<a href="https://github.com/noobmaster007/Online_Exam_2019" target="_blank"><b>Github Page</b></a>
 </div>
 <div class="col-md-3 box">
-<a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
+<a href="#" data-toggle="modal" data-target="#login"><b>Admin Login</b></a></div>
 <div class="col-md-3 box">
-<a href="#" data-toggle="modal" data-target="#developers">Developers</a>
+<a href="#" data-toggle="modal" data-target="#developers"><b>Developers</b></a>
 </div>
 <div class="col-md-3 box">
 
@@ -258,9 +259,9 @@ if (@$_GET['w']) {
 		 </div>
 		 <div class="col-md-5">
 		<a href="#" style="color:#202020; font-family: 'Lato', sans-serif; font-size:18px" title="Find on Facebook">Sakila Sultana</a>
-		<h4 style="color:#202020; font-family:'typo' ;font-size:16px" class="title1">+91 7583980837</h4>
+		    <h4 style="color:#202020; font-family:'typo' ;font-size:16px" class="title1">+91 7583980837</h4>
 		<h4 style="font-family:'typo' ">email id</h4>
-		<h4 style="font-family:'typo' ">Siliguri Institute of Technology, Siliguri</h4></div></div>
+		 <h4 style="font-family:'typo' ">Siliguri Institute of Technology, Siliguri</h4></div></div>
 		</p>
       </div> <!--div end-->
     
@@ -274,7 +275,7 @@ if (@$_GET['w']) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">LOGIN</span></h4>
+        <h4 class="modal-title"><span style="color:blue;font-family:'typo' ">Admin Log In</span></h4>
       </div>
       <div class="modal-body title1">
 <div class="row">
