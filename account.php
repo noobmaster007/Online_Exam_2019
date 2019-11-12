@@ -20,18 +20,46 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 
 
+<!-- alert msg -->
+<?php
+if (@$_GET['w']) {
+    echo '<script>alert("'.@$_GET['w'].'");</script>';
+}
+?>
+<!-- alert msg -->
 </head>
+<?php
+include_once('dbcon.php');
+?>
 
 <body>
 <div class="header">
-<div class="row">
-<div class="col-lg-6">
-<span class="logo">Online Exam</span></div>
-<div class="col-md-4 col-md-offset-2">
+  <div class="row">
+    <div class="col-lg-6">
+      <span class="logo">Online Exam</span></div>
+        <div class="col-md-4 col-md-offset-2">
+                  <?php
+                  include('dbcon.php');
+                  session_start();
 
-</div>
-</div>
-</div>
+                  if (!(isset($_SESSION['email']))) {
+                    header("location:");
+                    //index.php
+                  }
+                  else {
+                    $name = $_SESSION['name'];
+                    $email = $_SESSION['email'];
+
+                    echo '<span class="pull-right top title1">
+                    <span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    >&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span><a href="account.php?q=1" class="log log1">'.$name.'</a>
+                    &nbsp;&nbsp;<a href="" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+                                    //(logout.php?q=index.php)here the value of q = index.php this value goes to logout.php
+                  }
+                  ?>
+        </div>
+      </div>
+    </div>
 <div class="bg">
 
 <!--navigation menu-->
@@ -51,10 +79,11 @@
     
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li  ><a href="account.php?q=1"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home<span class="sr-only">(current)</span></a></li>
-        <li ><a href="account.php?q=2"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;History</a></li>
-		<li ><a href="account.php?q=3"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Ranking</a></li>
-		<li class="pull-right"> <a href="logout.php?q=account.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
+        <li <?php if(@$_GET['q']==1) echo 'class="active"'; ?> ><a href="account.php?q=1"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home<span class="sr-only">(current)</span></a></li>
+        <li <?php if(@$_GET['q']==2) echo 'class="active"'; ?> ><a href="account.php?q=2"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;History</a></li>
+		<li <?php if(@$_GET['q']==3) echo 'class="active"'; ?> ><a href="account.php?q=3"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Ranking</a></li>
+		<li class="pull-right"> <a href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
+                        <!-- logout.php?q=index.php -->
 		</ul>
             
       </div>
@@ -65,7 +94,56 @@
 <div class="col-md-12">
 
 <!--home start-->
+<?php
+if (@$_GET['q']==1) {
+  
+  $query = "SELECT * FROM quiz ORDER BY date DESC";
+  $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database
 
+  echo '<div class="panel"><div class="table-responsive">
+          <table class="table table-striped title1">
+          <tr>      
+          <td><b>Serial No.</b></td>
+          <td><b>Topic</b></td>
+          <td><b>Total Question</b></td>
+          <td><b>Marks</b></td>
+          <td><b>Time Limit</b></td>
+          <td></td>
+          </tr>'; // table format in html tags
+
+  $sn = 1; //serial no count
+
+  while ($row = mysqli_fetch_array($result)) {
+        
+    $title = $row['title'];
+    $total = $row['total'];
+    $right = $row['right'];
+    $time = $row['time'];
+    $eid = $row['eid'];
+
+    $query1 = "SELECT score FROM history WHERE eid='$eid' and email='$email'";  
+    //checks in this history table whether the existing user attempted it or not
+    $reslt = mysqli_query($connection,$query1) or die('Fatal Error');
+
+    $rowcount = mysqli_num_rows($reslt);
+    if ($rowcount == 0) { //checks if the user previously attempt the quiz or not, if no then execute this
+      echo '<tr>
+            <td>'.$sn++.'</td>
+            <td>'.$title.'</td>
+            <td>'.$total.'</td>
+            <td>'.$right*$total.'</td>
+            <td>'.$time.'&nbsp;min</td>
+            
+            <td><b><a href="account.php?q=quiz&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" 
+            style="margin:1px;background:#2471A3">&nbsp;<span class="title1"><b>START</b></span></a></b></td>
+            </tr>';   //this is for QUIZ START button
+    }
+    else {  //if yes then execute this
+      
+    }
+  }
+}
+?>
 
 
 

@@ -32,6 +32,7 @@ if ($rows==1) {
 }
 else {
     header("location:$ref?w=Wrong Username and Password!"); //same as admin.php
+                    //ref = index.php
 }
 
 ?>
