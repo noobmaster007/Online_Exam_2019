@@ -293,6 +293,26 @@ if (@$_GET['q']==2) {
 ?>
 <!-- HISTORY END -->
 
+<!-- RANKING START -->
+<?php
+if (@$_GET['q']==3) {
+  
+  $q=mysqli_query($connection,"SELECT * FROM rank ORDER BY score DESC")or die('Error223');
+
+  echo '<div class="panel title">
+          <div class="table-responsive">
+            <table class="table table-striped title1">
+              <tr style="color:black;">
+              <td><b>Rank</b></td>
+              <td><b>Name</b></td>
+              <td><b>Gender</b></td>
+              <td><b>College</b></td>
+              <td><b>Score</b></td>
+              </tr>';
+}
+?>
+<!-- RANKING END -->
+
 </div></div></div></div>
 <!--Footer start-->
 <div class="row footer">
