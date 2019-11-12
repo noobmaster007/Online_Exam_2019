@@ -139,9 +139,19 @@ if (@$_GET['q']==1) {
             </tr>';   //this is for QUIZ START button
     }
     else {  //if yes then execute this
-      
+      echo '<tr style="color:#27AE60">
+            <td>'.$sn++.'</td>
+            <td>'.$title.'<span class="glyphicon glyphicon-ok"></span></td>
+            <td>'.$total.'</td>
+            <td>'.$right*$total.'</td>
+            <td>'.$time.'</td>
+            
+            <td><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-repeat"></span>&nbsp;<span class="title1"><b>RESTART</b></span></a></td>
+            </tr>';
     }
   }
+  $sn=0;
+  echo '</table></div></div>';
 }
 ?>
 
