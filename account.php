@@ -209,7 +209,7 @@ if (@$_GET['q'] == 'result' && @$_GET['eid']) {
 
   $q = mysqli_query($connection,"SELECT * FROM history WHERE eid='$eid' and email='$email'")or die('Fatal Error');
   echo '<div class="panel">
-  <center><h1 class="title" style="color:#D4AC0D">Result</h1><center><br>
+  <center><h1 class="title" style="color:#D4AC0D">Result</h1></center><br>
   <table class="table table-striped title1" style="font-size:10px;font-weight:1000;">';
 
   while ($row=mysqli_fetch_array($q)) {
@@ -217,8 +217,9 @@ if (@$_GET['q'] == 'result' && @$_GET['eid']) {
     $score = $row['score'];
     $wrong=$row['wrong'];
     $right=$row['sahi'];
-    $qa=$row['level'];  //total questions
+    $qa=$row['quescount'];  //total questions
 
+    //showing result after completion of exam/quiz.
     echo '<tr style="color:#1C2833">
           <td>Total Questions</td>
           <td>'.$qa.'</td>
@@ -239,13 +240,58 @@ if (@$_GET['q'] == 'result' && @$_GET['eid']) {
           <td>'.$score.'</td>
           </tr>';
   }
-  
+  echo '</table></div>';
 }
 ?>
 <!--quiz end-->
 
+<!-- HISTORY START -->
+<?php
+if (@$_GET['q']==2) {
+  
+  $q=mysqli_query($connection,"SELECT * FROM history WHERE email='$email' ORDER BY date DESC")or die('Error324');
 
+  echo '<div class="panel title">
+        <table class="table table-striped title1">
+        <tr style="color:black;">
+        <td><b>Serial No</b></td>
+        <td><b>Exams</b></td>
+        <td><b>Question Solved</b></td>
+        <td><b>Right</b></td>
+        <td><b>Wrong</b></td>
+        <td><b>Score</b></td>'; //prints the table in history tab
 
+  $c=0; //serial no
+
+  while($row=mysqli_fetch_array($q)){     //loops how many exams u attempted
+      //fetch the infos in history table
+      $eid=$row['eid']; 
+      $score=$row['score'];
+      $wrong=$row['wrong'];
+      $right=$row['right'];
+      $quescount=$row['quescount'];
+      //for Name of Exam(title) the query for quiz table
+      $query3=mysqli_query($connection,"SELECT title FROM quiz WHERE eid='$eid'")or die('Error222');
+
+      while ($row=mysqli_fetch_array($query3)) {
+        $title=$row['title'];
+      }
+
+      $c++;
+
+      echo '<tr>
+            <td>'.$c.'</td>
+            <td>'.$title.'</td>
+            <td>'.$quescount.'</td>
+            <td>'.$right.'</td>
+            <td>'.$wrong.'</td>
+            <td>'.$score.'</td>';
+  }
+
+  echo '</table></div>';
+}
+?>
+<!-- HISTORY END -->
 
 </div></div></div></div>
 <!--Footer start-->
