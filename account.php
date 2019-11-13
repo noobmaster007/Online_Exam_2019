@@ -250,7 +250,7 @@ if (@$_GET['q'] == 'result' && @$_GET['eid']) {
 if (@$_GET['q']==2) {
   
   $q=mysqli_query($connection,"SELECT * FROM history WHERE email='$email' ORDER BY date DESC")or die('Error324');
-
+    //fetch the detail of single user id to see that how many exam he/she attempted
   echo '<div class="panel title">
         <table class="table table-striped title1">
         <tr style="color:black;">
@@ -259,7 +259,7 @@ if (@$_GET['q']==2) {
         <td><b>Question Solved</b></td>
         <td><b>Right</b></td>
         <td><b>Wrong</b></td>
-        <td><b>Score</b></td>'; //prints the table in history tab
+        <td><b>Score</b></td>'; //draw table
 
   $c=0; //serial no
 
@@ -330,7 +330,7 @@ if (@$_GET['q']==3) {
           <td>'.$name.'</td>
           <td>'.$gender.'</td>
           <td>'.$college.'</td>
-          <td>'.$score.'</td>';
+          <td>'.$score.'</td>';   //prints the value
   }
   echo '</table></div></div>';
 }
