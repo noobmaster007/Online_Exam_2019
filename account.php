@@ -309,6 +309,30 @@ if (@$_GET['q']==3) {
               <td><b>College</b></td>
               <td><b>Score</b></td>
               </tr>';
+
+  $c=0;
+  while ($row=mysqli_fetch_array($q)) {   //fetch email id and score of users..
+    //and print the details in the table..
+    $email=$row['email'];
+    $score=$row['score'];
+
+    $q=mysqli_query($connection,"SELECT * FROM user WHERE email='$email'")or die('Error112');
+    while($row=mysqli_fetch_array($q)){
+
+      $name=$row['name'];
+      $gender=$row['gender'];
+      $college=$row['college'];
+    }
+    $c++;
+    
+    echo '<tr>
+          <td style="color:#0F0E0E"><b>'.$c.'</b></td>
+          <td>'.$name.'</td>
+          <td>'.$gender.'</td>
+          <td>'.$college.'</td>
+          <td>'.$score.'</td>';
+  }
+  echo '</table></div></div>';
 }
 ?>
 <!-- RANKING END -->
