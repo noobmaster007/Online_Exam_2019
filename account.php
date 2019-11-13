@@ -36,7 +36,7 @@ include_once('dbcon.php');
 <div class="header">
   <div class="row">
     <div class="col-lg-6">
-      <span class="logo">Online Exam</span></div>
+      <span class="logo">Online Examination</span></div>
         <div class="col-md-4 col-md-offset-2">
                   <?php
                     include('dbcon.php');
@@ -95,7 +95,7 @@ include_once('dbcon.php');
 
 <!--home start-->
 <?php
-if (@$_GET['q']==1) {
+if (@$_GET['q']==1) {   //from url
   
   $query = "SELECT * FROM quiz ORDER BY date DESC";
   $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database table
@@ -166,7 +166,7 @@ if (@$_GET['q']==1) {
 <!--quiz start-->
 <?php
 if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START button url
-  $eid = @$_GET['eid']; //fetched from history table
+  $eid = @$_GET['eid']; //fetched from url
   $sn = @$_GET['n'];  //fetched from start button url
   $total = @$_GET['t']; //fetched from start button url
 
