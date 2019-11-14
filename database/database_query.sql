@@ -71,9 +71,9 @@ INSERT INTO `questions` (`eid`,`qid`,`qns`,`choice`,`sn`) VALUES
 
 -- ----------------------------------------------------------------------
 
--- table structure for table `quiz`
+-- table structure for table `exam`
 
-CREATE TABLE `quiz` (
+CREATE TABLE `exam` (
   `eid` text not null,
   `title` text not null,
   `right` int(11) not null,
@@ -83,9 +83,9 @@ CREATE TABLE `quiz` (
   `date` timestamp not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- inserting data for table `quiz`
+-- inserting data for table `exam`
 
-INSERT INTO `quiz` (`eid`,`title`,`right`,`wrong`,`total`,`time`,`date`) VALUES
+INSERT INTO `exam` (`eid`,`title`,`right`,`wrong`,`total`,`time`,`date`) VALUES
 ('','',0,0,0,0,'');
 
 -- ---------------------------------------------------------------------
