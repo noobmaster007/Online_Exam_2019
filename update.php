@@ -20,7 +20,7 @@ if (@$_GET['q']='quiz' && @$_GET['step']==2) {
     }
 
     if ($ans == $ansid) {       //if the answer is matched
-        $q=mysqli_query($connection,"SELECT * FROM quiz WHERE eid='$eid'");
+        $q=mysqli_query($connection,"SELECT * FROM exam WHERE eid='$eid'");
 
         while ($row=mysqli_fetch_array($q)) {
             $right=$row['right'];   //denotes marks of each question,provided by the admin
@@ -42,7 +42,7 @@ if (@$_GET['q']='quiz' && @$_GET['step']==2) {
 
     }
     else {     //if the ans doesnt matched
-        $q=mysqli_query($connection,"SELECT * FROM quiz WHERE eid='$eid'")or die('Error999');
+        $q=mysqli_query($connection,"SELECT * FROM exam WHERE eid='$eid'")or die('Error999');
             //
             while ($row=mysqli_fetch_array($q)) {
                 $wrong=$row['wrong'];   //marks of negative answer, provided by the admin

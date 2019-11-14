@@ -7,7 +7,7 @@ SET TIME_ZONE = "+00:00";
 
 -- table structure for the `admin`
 
-CREATE TABLE `admin` (
+CREATE TABLE `admin` (    -- it contains only admin credentials
   `admin_id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(500) NOT NULL
@@ -24,7 +24,7 @@ INSERT INTO `admin` (`admin_id`, `email`, `password`) VALUES
 -- -----------------------------------------------------------------------
 -- table structure for `answer`
 
-CREATE TABLE `answer` (
+CREATE TABLE `answer` (     -- contains all the correct ans according to ques.
   `qid` text NOT NULL, -- qid = question id
   `ansid` text NOT NULL -- ansid = answer id
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,7 +40,7 @@ INSERT INTO `answer` (`qid`, `ansid`) VALUES
 
 -- table structure for table `options`
 
-CREATE TABLE `options` (
+CREATE TABLE `options` (   -- contains all the options to print in each question
   `qid` varchar(50) NOT NULL,
   `option` varchar(5000) NOT NULL,
   `optionid` text NOT NULL
@@ -56,12 +56,12 @@ INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
 
 -- table structure for table 'questions'
 
-CREATE TABLE `questions` (
-  `eid` text NOT NULL,
-  `qid` text not null,
-  `qns` text not null,
-  `choice` int(10) not null,
-  `sn` int(11) not null
+CREATE TABLE `questions` (   -- contains all the ques of diff topic
+  `eid` text NOT NULL,    -- who is the creator
+  `qid` text not null,    -- ques id
+  `qns` text not null,    -- questions
+  `choice` int(10) not null,  -- there are 4 options 
+  `sn` int(11) not null   -- denotes the serial no. of ques
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- inserting data into table 'questions'
@@ -73,13 +73,13 @@ INSERT INTO `questions` (`eid`,`qid`,`qns`,`choice`,`sn`) VALUES
 
 -- table structure for table `exam`
 
-CREATE TABLE `exam` (
-  `eid` text not null,
-  `title` text not null,
-  `right` int(11) not null,
-  `wrong` int(11) not null,
-  `total` int(11) not null,
-  `time` bigint(20) not null,
+CREATE TABLE `exam` (   -- contains all the exam topic wise
+  `eid` text not null,  -- creator of that topic
+  `title` text not null,  -- topic name
+  `right` int(11) not null, -- marks of each ques
+  `wrong` int(11) not null,   -- negative marks
+  `total` int(11) not null,   -- total no of question
+  `time` bigint(20) not null, -- total time of each topic
   `date` timestamp not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
