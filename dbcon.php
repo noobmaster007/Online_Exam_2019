@@ -1,6 +1,6 @@
 <?php
 $connection=new mysqli(
-    'localhost',
+    'localhost',    //server name
     'root', //username
     '', //password
     'onlineproject' // database name
