@@ -38,7 +38,7 @@ $(function () {
 <span class="logo">Online Examination</span></div>
 <?php
 include_once('dbcon.php');
-session_start();
+//session_start();
 
 $email = $_SESSION['email'];
 if (!(isset($_SESSION['email']))) { //if there is no email is match in database then go back to index.php
