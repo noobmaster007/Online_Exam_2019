@@ -35,7 +35,7 @@ $(function () {
 <div class="header">
 <div class="row">
 <div class="col-lg-6">
-<span class="logo">Online Test</span></div>
+<span class="logo">Online Examination</span></div>
 <?php
 include_once('dbcon.php');
 session_start();
@@ -74,14 +74,14 @@ echo '<span class="pull-right top title1">
     
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href=""><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home<span class="sr-only">(current)</a></span></li>
-        <li ><a href=""><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;User</a></li>
-		<li ><a href=""><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Ranking</a></li>
-        <li class="dropdown">
+        <li <?php if(@$_GET['q']==0) echo 'class="active"'; ?>><a href="dash.php?q=0"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home<span class="sr-only">(current)</a></span></li>
+        <li <?php if(@$_GET['q']==1) echo 'class="active"'; ?>><a href="dash.php?q=1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;User</a></li>
+		<li <?php if(@$_GET['q']==2) echo 'class="active"'; ?>><a href="dash.php?q=2"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Ranking</a></li>
+        <li class="dropdown <?php if(@$_GET['q']==3 || @$_GET['q']==4) echo 'class="active"'; ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quiz<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href=""><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Quiz</a></li>
-            <li><a href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;Remove Quiz</a></li>
+            <li><a href="dash.php?q=3"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Quiz</a></li>
+            <li><a href="dash.php?q=4"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;Remove Quiz</a></li>
 			
           </ul>
         </li><li class="pull-right"> <a href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
@@ -96,7 +96,67 @@ echo '<span class="pull-right top title1">
 <div class="col-md-12">
 <!--home start-->
 
+<?php 
 
+if(@$_GET['q']==0) {
+
+  $result = mysqli_query($connection, "SELECT * FROM exam ORDER BY date DESC")or die('Error');
+
+  echo '<div class="panel">
+          <div class="table-responsive">
+            <table class="table table-striped title1">
+            
+            <tr>
+              <td><b>Serial NO.</b></td>
+              <td><b>Topic</b></td>
+              <td><b>Total Question</b></td>
+              <td><b>Marks</b></td>
+              <td><b>Time Limit</b></td>
+              <td></td>
+            </tr>';
+
+    $c = 1;
+    while ($row = mysqli_fetch_array($result)) {
+      $title = $row['title'];
+      $total = $row['total'];
+      $right = $row['right'];
+      $time = $row['time'];
+      $eid = $row['eid'];
+
+      $q12 = mysqli_query($connection,"SELECT score FROM history WHERE eid='$eid' and email='$email'")or die('Error98');
+
+      $row=mysqli_num_rows($q12);
+
+      if ($row==0) {
+          echo '<tr>
+                  <td>'.$c++.'</td>
+                  <td>'.$title.'</td>
+                  <td>'.$total.'</td>
+                  <td>'.$right*$total.'</td>
+                  <td>'.$time.'&nbsp;min</td>
+                  <td><b><a href="account.php?q=quiz&step=2&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background=99cc32" aria-hidden="true"&nbsp;><span class="title1"><b>START</b></span></a></b></td></tr>';
+
+      }
+      else {
+        echo '<tr style="color:#99cc32">
+                <td>'.$c++.'</td>
+                <td>'.$title.'&nbsp;<span title="This exam already solved by you" class="glyphicon glyphicon-ok" aria-hidden="true"></td>
+                <td>'.$total.'</td>
+                <td>'.$right*$total.'</td>
+                <td>'.$time.'&nbsp;min</td>
+                <td><b><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:red" aria-hidden="true">&nbsp;<span class="title1"><b>RESTART</b></span></a></b></td></tr>';
+
+      }
+    }
+    $c=0;
+    echo '</table>
+        </div>
+      </div>';
+}
+
+
+
+?>
 
 
 <!--home closed-->
