@@ -417,7 +417,7 @@ if (@$_GET['q']==4) {   //check the url whether matches or not
             <td>'.$total.'</td>
             <td>'.$right*$total.'</td>
             <td><b><a href="update.php?q=rmquiz&eid='.$eid.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Remove</b></span></b></td>
-            </tr>';
+            </tr>';   //put the value into the table...
     }
     $c=0;
     echo '</table>
