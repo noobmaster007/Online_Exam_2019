@@ -94,7 +94,7 @@ echo '<span class="pull-right top title1">
 <div class="container">
 <div class="row">
 <div class="col-md-12">
-<!--home start-->
+<!--home start same as user part-->    
 
 <?php 
 
@@ -154,15 +154,100 @@ if(@$_GET['q']==0) {
       </div>';
 }
 
+// ranking start    same as user part
+if (@$_GET['q']==2) {
 
+  $q = mysqli_query($connection, "SELECT * FROM rank ORDER BY score DESC")or die('Error221');
 
+  echo '<div class="panel title">
+          <div class="table-responsive">
+            <table class="table table-striped title1">
+            
+            <tr style="color:black">
+              <td><b>Rank</b></td>
+              <td><b>Name</b></td>
+              <td><b>Gender</b></td>
+              <td><b>College</b></td>
+              <td><b>Score</b></td>
+            </tr>';
+
+  $c=0;
+  while ($row=mysqli_fetch_array($q)) {
+    
+    $email = $row['email'];
+    $score = $row['score'];
+
+    $q12 = mysqli_query($connection,"SELECT * FROM user WHERE email='$email'")or die('Error234');
+    while ($row=mysqli_fetch_array($q12)) {
+
+      $name = $row['name'];
+      $gender = $row['gender'];
+      $college = $row['college'];
+    }
+    $c++;
+
+    echo '<tr>
+          <td style="color:#99cc32"><b>'.$c.'</b></td>
+          <td>'.$name.'</td>
+          <td>'.$gender.'</td>
+          <td>'.$college.'</td>
+          <td>'.$score.'</td>
+          </tr>';
+  }
+  echo '</table>
+      </div>
+    </div>';
+}
 ?>
-
-
 <!--home closed-->
-<!--users start-->
 
+
+<!--users start-->
+<?php 
+if (@$_GET['q']==1) {
+  
+  $result = mysqli_query($connection,"SELECT * FROM user")or die('Error');
+
+  echo '<div class="panel">
+          <div class="table-responsive">
+              <table class="table table-striped title1">
+              <tr>
+                <td><b>Serial No.</b></td>
+                <td><b>Name</b></td>
+                <td><b>Gender</b></td>
+                <td><b>College</b></td>
+                <td><b>Email</b></td>
+                <td><b>Mobile</b></td>
+              </tr>';
+      
+    $c=1;
+    while ($row=mysqli_fetch_array($result)) {
+      
+      $name = $row['name'];
+      $mob = $row['mob'];
+      $gender = $row['gender'];
+      $email = $row['email'];
+      $college = $row['college'];
+
+      echo '<tr>
+              <td>'.$c++.'</td>
+              <td>'.$name.'</td>
+              <td>'.$gender.'</td>
+              <td>'.$college.'</td>
+              <td>'.$email.'</td>
+              <td>'.$mob.'</td>
+              <td><a title="Delete user" href="update.php?demail='.$email.'"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td></tr>';
+
+    }
+    $c=0;
+    echo '</table>
+        </div>
+        </div>';
+}
+?>
 <!--user end-->
+
+
 
 <!--feedback start-->
 
