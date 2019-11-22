@@ -38,7 +38,7 @@ $(function () {
 <span class="logo">Online Examination</span></div>
 <?php
 include_once('dbcon.php');
-//session_start();
+session_start();
 
 $email = $_SESSION['email'];
 if (!(isset($_SESSION['email']))) { //if there is no email is match in database then go back to index.php
@@ -80,8 +80,8 @@ echo '<span class="pull-right top title1">
         <li class="dropdown <?php if(@$_GET['q']==3 || @$_GET['q']==4) echo 'class="active"'; ?>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quiz<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="dash.php?q=3"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Quiz</a></li>
-            <li><a href="dash.php?q=4"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;Remove Quiz</a></li>
+            <li><a href="dash.php?q=3"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Exam</a></li>
+            <li><a href="dash.php?q=4"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;Remove Exam</a></li>
 			
           </ul>
         </li><li class="pull-right"> <a href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
@@ -371,13 +371,61 @@ if (@$_GET['q']==3 && @$_GET['step']==2) {
                   <option value="d">option d</option>
               </select><br><br>';
       }
+
+  echo '<div class="form-group">
+        <label class="col-md-12 control-label" for=""></label>
+        <div class="col-md-12">
+          <input type="submit" style="margin-left:45%" class="btn btn-primary" value="Submit" class="btn btn-primary"/>
+        </div>
+      </div>
+      
+      <fieldset>
+      </form>
+      </div>';
 }
 ?>
 <!--Enter Questions along with Options END-->
 
-<!--remove quiz-->
+<!--remove quiz START-->
+<?php
+if (@$_GET['q']==4) {   //check the url whether matches or not
 
+  $result = mysqli_query($connection,"SELECT * FROM exam ORDER BY DATE DESC")or die('Error');
+  //fetch the exams order by date, means most recent exam placed on top
+  echo '<div class="panel">
+          <div class="table-responsive">
+            <table class="table table-striped title1">
+            
+            <tr>
+            <td><b>Serial No.</b></td>
+            <td><b>Topic</b></td>
+            <td><b>Total Question</b></td>
+            <td><b>Marks</b></td>
+            <td><b></b></td>
+            </tr>';   //table format
 
+    $c=1; //serial no.
+    while ($row=mysqli_fetch_array($result)) {
+      $title = row['title'];
+      $total = row['total'];
+      $right = row['right'];  //marks of each question
+      $eid = row['eid'];
+
+      echo '<tr>
+            <td>'.$c++.'</td>
+            <td>'.$title.'</td>
+            <td>'.$total.'</td>
+            <td>'.$right*$total.'</td>
+            <td><b><a href="update.php?q=rmquiz&eid='.$eid.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Remove</b></span></b></td>
+            </tr>';
+    }
+    $c=0;
+    echo '</table>
+    </div>
+    </div>';
+}
+?>
+<!--remove quiz END-->
 
 </div><!--container closed-->
 </div></div>
