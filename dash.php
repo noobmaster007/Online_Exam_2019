@@ -248,21 +248,132 @@ if (@$_GET['q']==1) {
 <!--user end-->
 
 
-
-<!--feedback start-->
-
-<!--feedback closed-->
-
-<!--feedback reading portion start-->
-
-<!--Feedback reading portion closed-->
-
 <!--add quiz start-->
+<?php
+if (@$_GET['q']==3 && !(@$_GET['step'])) {
 
+  echo '<div class="row">
+          <span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Quiz Details</b></span><br><br>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <form class="form-horizontal title1" name="form" action="update.php?q=addquiz" method="POST">
+              <fieldset>
+              
+              <div class="form-group">
+                <label class="col-md-12 control-label" for="name"></label>
+                <div class="col-md-12">
+                <input id="name" name="name" placeholder="Enter Exam title" class="form-control input-md" type="text">
+                
+                </div>
+              </div>
+              
+              
+              <div class="form-group">
+              <label class="col-md-12 control-label" for="total"></label>
+              <div class="col-md-12">
+              <input id="total" name="total" placeholder="Enter Total Number of Questions" class="form-control input-md" type="number">
+              
+              </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="col-md-5" for="right">Marks on Right Answer</label>
+              <div class="col-md-12">
+              <input id="right" class="form-control input-md" min="0" type="number" value="2" readonly="readonly">
+              
+              </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="col-md-6" for="wrong">Marks on Wrong Answer W/o sign</label>
+              <div class="col-md-12">
+              <input id="wrong" name="wrong" value="1" readonly="readonly" class="form-control input-md" min="0" type="number">
+              
+              </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="time"></label>
+                <div class="col-md-12">
+                  <input id="time" name="time" placeholder="Enter time limit for test in minute" class="form-control input-md" min="1" type="number">
+
+                </div>
+            </div>
+    </fieldset>
+    </form>
+    </div>';
+
+}
+?>
 <!--add quiz end-->
 
-<!--add quiz step2 start-->
-<!--add quiz step 2 end-->
+<!--Enter Questions along with Options START-->
+<?php
+if (@$_GET['q']==3 && @$_GET['step']==2) {
+  echo '<div class="row">
+        <span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Question Details</b></span><br><br>
+          <div class="col-md-3">
+          </div>
+            <div class="col-md-6">
+              <form class="form-horizontal title1" name="form" action="update.php?q=addqn&n='.@$_GET['n'].'&eid='.@$_GET['eid'].'&ch=4" method="POST">
+              <fieldset>';
+      
+      for ($i=1; $i <=@$_GET['n'] ; $i++) { 
+        echo '<b>Question Number&nbsp;'.$i.'&nbsp;</b><br>
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="qns'.$i.'"></label>
+          <div class="col-md-12">
+          <textarea row="3" cols="5" name="qns'.$i.'" class="form-control" placeholder="Write question number '.$i.' here..."></textarea>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="'.$i.'1"></label>
+          <div class="col-md-12">
+          <input id="'.$i.'1" placeholder="Enter option a" class="form-control input-md" type="text">
+          
+          </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-12 control-label" for="'.$i.'2"></label>
+            <div class="col-md-12">
+            <input id="'.$i.'2" name="'.$i.'2" placeholder="Enter option b" class="form-control input-md" type="text">
+            
+            </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="'.$i.'3"></label>
+              <div class="col-md-12">
+              <input id="'.$i.'3" name="'.$i.'3" placeholder="Enter option c" class="form-control input-md" type="text">
+              
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-md-12 control-label" for="'.$i.'4"></label>
+              <div class="col-md-12">
+              <input id="'.$i.'4" name="'.$i.'4" placeholder="Enter option d" class="form-control input-md" type="text">
+              
+              </div>
+            </div>
+            <br>
+            <b>Correct Answer</b><br>
+            <select id="ans'.$i.'" name="ans'.$i.'" placeholder="Choose correct answer" class="form-control input-md">
+                  <option value="a">Select answer for question '.$i.'</option>
+                  <option value="a">option a</option>
+                  <option value="b">option b</option>
+                  <option value="c">option c</option>
+                  <option value="d">option d</option>
+              </select><br><br>';
+      }
+}
+?>
+<!--Enter Questions along with Options END-->
 
 <!--remove quiz-->
 
