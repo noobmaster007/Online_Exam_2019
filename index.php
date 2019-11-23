@@ -176,7 +176,8 @@ if (@$_GET['w']) {
 
 <!--FOOTER-->
 <div class="row footer">
-
+<div class="col-md-3 box">
+</div>
 <div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#login"><b>Admin Login</b></a></div>
 <div class="col-md-3 box">
