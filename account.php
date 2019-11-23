@@ -95,9 +95,9 @@ include_once('dbcon.php');
 
 <!--home start-->
 <?php
-if (@$_GET['q']==1) {   //from url
+if (@$_GET['q']==1) {
   
-  $query = "SELECT * FROM exam ORDER BY date DESC";
+  $query = "SELECT * FROM quiz ORDER BY date DESC";
   $result = mysqli_query($connection,$query) or die('Error'); //create a connection to database table
 
   echo '<div class="panel"><div class="table-responsive">
@@ -119,16 +119,16 @@ if (@$_GET['q']==1) {   //from url
     $total = $row['total'];
     $right = $row['right'];
     $time = $row['time'];
-    $eid = $row['eid']; //eid of exam
+    $eid = $row['eid']; //eid of quiz
 
     $query1 = "SELECT score FROM history WHERE eid='$eid' and email='$email'";  
     //email = checks in this history table whether the existing user attempted it or not
     //eid = which topic is attempted by user
 
-    $reslt = mysqli_query($connection,$query1) or die('Fatal Error');
+    $result = mysqli_query($connection,$query1) or die('Fatal Error');
 
-    $rowcount = mysqli_num_rows($reslt);
-    if ($rowcount == 0) { //checks if the user previously attempt the exam or not, if no then execute this
+    $rowcount = mysqli_num_rows($result);
+    if ($rowcount == 0) { //checks if the user previously attempt the quiz or not, if no then execute this
       echo '<tr>
             <td>'.$c++.'</td>
             <td>'.$title.'</td>
@@ -138,7 +138,7 @@ if (@$_GET['q']==1) {   //from url
           
             <td><b><a href="account.php?q=quiz&step=2&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" 
             style="margin:1px;background:#2471A3">&nbsp;<span class="title1"><b>START</b></span></a></b></td>
-            </tr>';   //this is for exam START button
+            </tr>';   //this is for QUIZ START button
     }
     else {  //if yes then execute this
       echo '<tr style="color:#27AE60">
@@ -149,7 +149,7 @@ if (@$_GET['q']==1) {   //from url
             <td>'.$time.'</td>
             
             <td><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-repeat"></span>&nbsp;<span class="title1"><b>RESTART</b></span></a></td>
-            </tr>'; //this is for exam RESTART button
+            </tr>'; //this is for quiz RESTART button
     }
   }
   $c=0;
@@ -166,7 +166,7 @@ if (@$_GET['q']==1) {   //from url
 <!--quiz start-->
 <?php
 if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START button url
-  $eid = @$_GET['eid']; //fetched from url
+  $eid = @$_GET['eid']; //fetched from history table
   $sn = @$_GET['n'];  //fetched from start button url
   $total = @$_GET['t']; //fetched from start button url
 
@@ -271,7 +271,7 @@ if (@$_GET['q']==2) {
       $right=$row['right'];
       $quescount=$row['quescount'];
       //for Name of Exam(title) the query for quiz table
-      $query3=mysqli_query($connection,"SELECT title FROM exam WHERE eid='$eid'")or die('Error222');
+      $query3=mysqli_query($connection,"SELECT title FROM quiz WHERE eid='$eid'")or die('Error222');
 
       while ($row=mysqli_fetch_array($query3)) {
         $title=$row['title'];
