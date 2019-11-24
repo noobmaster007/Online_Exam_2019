@@ -321,13 +321,14 @@ if (@$_GET['q']==3 && !(@$_GET['step'])) {
 
 <!--Enter Questions along with Options START-->
 <?php
-if (@$_GET['q']==3 && @$_GET['step']==2) {
+if (@$_GET['q']==3 && @$_GET['step']==2) {  //this gets the value from update page, when add exam is finish executing
+  // also get the value of n and eid from update page
   echo '<div class="row">
         <span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Question Details</b></span><br><br>
           <div class="col-md-3">
           </div>
             <div class="col-md-6">
-              <form class="form-horizontal title1" name="form" action="update.php?q=addqn&n='.@$_GET['n'].'&eid='.@$_GET['eid'].'&ch=4" method="POST">
+              <form class="form-horizontal title1" name="form" action="update.php?q=addqns&n='.@$_GET['n'].'&eid='.@$_GET['eid'].'&ch=4" method="POST">
               <fieldset>';
       
       for ($i=1; $i <=@$_GET['n'] ; $i++) { 

@@ -27,7 +27,7 @@ if ($rows==1) {
     }
     $_SESSION['name'] = $name;
     $_SESSION['email'] = $email;
-
+    
     header('location:account.php?q=1');
 }
 else {
