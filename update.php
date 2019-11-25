@@ -5,7 +5,7 @@ $email = $_SESSION['email'];
 
 //start exam
 //this update page is hidden from a user.
-if (@$_GET['q']='quiz' && @$_GET['step']==2) {
+if (@$_GET['q']=='quiz' && @$_GET['step']==2) {
     //get the values from the url
     $eid=@$_GET['eid']; //user id
     $sn=@$_GET['n'];    //question number
@@ -88,7 +88,7 @@ if (@$_GET['q']=='quizre' && @$_GET['step']==25) {
 }
 
 // remove exam
-    if (@$_GET['q']=='rmquiz') { //get the value from url and matches
+if (@$_GET['q']=='rmquiz') { //get the value from url and matches
         
         $eid = @$_GET['eid']; //put it into variable, this eid from exam table, who create this exam
         //actually this eid gets generated when admin created those exam, questions. and this eid
@@ -107,7 +107,7 @@ if (@$_GET['q']=='quizre' && @$_GET['step']==25) {
         $result5 = mysqli_query($connection,"DELETE FROM history where eid='$eid'")or die('Error'); //deletes from history table of that exam.
 
         header("location:dash.php?q=4"); //after executing all, the page redirect to remove section.
-    }
+}
 
 // ADD EXAM
 if (@$_GET['q']== 'addquiz') {

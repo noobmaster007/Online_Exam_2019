@@ -42,11 +42,11 @@ session_start();
 
 $email = $_SESSION['email'];
 if (!(isset($_SESSION['email']))) { //if there is no email is match in database then go back to index.php
-  header('location:');  //index.php 
+  header("location:index.php");  //index.php 
 }
 else {  //if yes, then print the name of the user in dash.php
   $name = $_SESSION['name'];
-
+  include_once('dbcon.php');
 echo '<span class="pull-right top title1">
             <span class="log1">
             <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -331,7 +331,7 @@ if (@$_GET['q']==3 && @$_GET['step']==2) {  //this gets the value from update pa
               <form class="form-horizontal title1" name="form" action="update.php?q=addqns&n='.@$_GET['n'].'&eid='.@$_GET['eid'].'&ch=4" method="POST">
               <fieldset>';
       
-      for ($i=1; $i <=@$_GET['n'] ; $i++) { 
+      for ($i=1; $i <=@$_GET['n']; $i++) { 
         echo '<b>Question Number&nbsp;'.$i.'&nbsp;</b><br>
         <div class="form-group">
           <label class="col-md-12 control-label" for="qns'.$i.'"></label>
@@ -379,7 +379,7 @@ if (@$_GET['q']==3 && @$_GET['step']==2) {  //this gets the value from update pa
                   <option value="b">option b</option>
                   <option value="c">option c</option>
                   <option value="d">option d</option>
-              </select><br><br>';
+              </select><br/><br/>';
       }
 
   echo '<div class="form-group">
