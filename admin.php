@@ -23,7 +23,7 @@ if ($rows==1) {
     }
     
     $_SESSION["name"]='Admin';
-    // $_SESSION["key"]='admin';
+     $_SESSION["key"]='gablu';
     $_SESSION["email"]=$email;
     header("location:dash.php?q=0");
 }

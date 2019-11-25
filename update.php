@@ -39,7 +39,7 @@ if (@$_GET['q']=='quiz' && @$_GET['step']==2) {
         $r++;   //ans matched, incremented
         $s=$s+$right;   //marks of each ques + previous score
 
-        $q=mysqli_query($connection,"UPDATE `history` SET `score`=$s, `level`=$sn, `right`=$r, date=NOW() WHERE email='$email' AND eid='$eid'")or die('Error123');
+        $q=mysqli_query($connection,"UPDATE `history` SET `score`=$s, `quescount`=$sn, `right`=$r, date= NOW() WHERE email='$email' AND eid='$eid'")or die('Error123');
 
     }
     else {     //if the ans doesnt matched
@@ -50,7 +50,7 @@ if (@$_GET['q']=='quiz' && @$_GET['step']==2) {
             }
 
             if ($sn==1) {       //how many question from starting
-                $q=mysqli_query($connection,"INSERT INTO history VALUES('$email','$eid','0','0','0','0',NOW())")or die('Error443');
+                $q=mysqli_query($connection,"INSERT INTO history VALUES('$email','$eid','0','0','0','0',NOW() )")or die('Error443');
             }
 
             $q=mysqli_query($connection,"SELECT * FROM history WHERE eid='$eid' AND email='$email'")or die('Error445');
@@ -62,6 +62,36 @@ if (@$_GET['q']=='quiz' && @$_GET['step']==2) {
             }
             $w++; //wrong ans incremented,
             $s=$s-$wrong;   //previous score - marks of each wrong question
+            $q=mysqli_query($connection,"UPDATE `history` SET `score`=$s,`quescount`=$sn,`wrong`=$w, date=NOW() WHERE  email = '$email' AND eid = '$eid'")or die('Error147');
+
+    }
+    if ($sn != $total) {
+        $sn++;
+        header("location:account.php?q=quiz&step=2&eid=$eid&n=$sn&t=$total")or die('Error152');
+    }
+    else if ($_SESSION['key']!='gablu') {
+        $q = mysqli_query($connection,"SELECT score FROM history WHERE eid='$eid' AND email='$email'")or die('Error156');
+        while ($row=mysqli_fetch_array($q)) {
+            $s = $row['score'];
+        }
+        $q = mysqli_query($connection,"SELECT * FROM rank WHERE email='$email'")or die('Error161');
+        $rowcount=mysqli_num_rows($q);
+        if ($rowcount==0) {
+            $q2 = mysqli_query($connection,"INSERT INTO rank VALUES('$email','$s',NOW())")or die('Error165');
+
+        }
+        else {
+            while ($row=mysqli_fetch_array($q)) {
+                $sun = $row['score'];
+            }
+            $sun=$s+$sun;
+            $q=mysqli_query($connection,"UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE email= '$email'")or die('Error174');
+
+        }
+        header("location:account.php?q=result&eid=$eid");
+    }
+    else {
+        header("location:account.php?q=result&eid=$eid");
     }
 }
 
@@ -93,18 +123,18 @@ if (@$_GET['q']=='rmquiz') { //get the value from url and matches
         $eid = @$_GET['eid']; //put it into variable, this eid from exam table, who create this exam
         //actually this eid gets generated when admin created those exam, questions. and this eid
         //saved into exam table.
-        $result = mysqli_query($connection,"SELECT * FROM questions WHERE eid='$eid'")or die('Error');
+        $result = mysqli_query($connection,"SELECT * FROM questions WHERE eid='$eid' ") or die('Error');
         //according to eid, questions table has also unique qid, at that time when admin created those exam.
         while ($row=mysqli_fetch_array($result)) {  //fetch only qid
             $qid = $row['qid'];
 
-            $result1 = mysqli_query($connection,"DELETE FROM options where qid='$qid' ")or die('Error');   //deletes the options along with the questions
-            $result2 = mysqli_query($connection,"DELETE FROM answer where qid='$qid'")or die('Error');  //also deletes the answers 
+            $result1 = mysqli_query($connection,"DELETE FROM options where qid='$qid' ") or die('Error');   //deletes the options along with the questions
+            $result2 = mysqli_query($connection,"DELETE FROM answer where qid='$qid' ") or die('Error');  //also deletes the answers 
         }
 
-        $result3 = mysqli_query($connection,"DELETE FROM questions where eid='$eid'")or die('Error');   //deletes those questions who created this acc. to eid
-        $result4 = mysqli_query($connection,"DELETE FROM exam where eid='$eid'")or die('Error');    //also deletes the data acc to eid, who created that topic
-        $result5 = mysqli_query($connection,"DELETE FROM history where eid='$eid'")or die('Error'); //deletes from history table of that exam.
+        $result3 = mysqli_query($connection,"DELETE FROM questions where eid='$eid' ") or die('Error');   //deletes those questions who created this acc. to eid
+        $result4 = mysqli_query($connection,"DELETE FROM exam where eid='$eid' ") or die('Error');    //also deletes the data acc to eid, who created that topic
+        $result5 = mysqli_query($connection,"DELETE FROM history where eid='$eid' ") or die('Error'); //deletes from history table of that exam.
 
         header("location:dash.php?q=4"); //after executing all, the page redirect to remove section.
 }

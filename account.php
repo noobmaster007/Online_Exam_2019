@@ -176,7 +176,7 @@ if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START
 
   echo '<div class="panel" style="margin:5%">';
 
-  while ($row=mysqli_fetch_array($quesquery)) { 
+  while ($row=mysqli_fetch_array($q)) { 
     //fetch from the database = questions
    $qns = $row['qns'];  
    $qid = $row['qid'];
@@ -186,10 +186,10 @@ if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START
 
   $optionquery = "SELECT * FROM options WHERE qid = '$qid'";
   $q = mysqli_query($connection,$optionquery);
-  echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&total='.$total.'&qid='.$qid.'" method="POST" class="form-horizontal">
+  echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&t='.$total.'&qid='.$qid.'" method="POST" class="form-horizontal">
   <br>';  //form for select option
 
-  while ($row=mysqli_fetch_array($optionquery)) {
+  while ($row=mysqli_fetch_array($q)) {
     
     $option = $row['option'];
     $optionid = $row['optionid'];
@@ -200,6 +200,7 @@ if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START
   echo '<br><button type="submit" class="btn btn-primary">&nbsp;Next Question</button>
   
   </form></div>';   //for next button
+
 }
 
 //RESULT DISPLAY
@@ -216,7 +217,7 @@ if (@$_GET['q'] == 'result' && @$_GET['eid']) {
     
     $score = $row['score'];
     $wrong=$row['wrong'];
-    $right=$row['sahi'];
+    $right=$row['right'];
     $qa=$row['quescount'];  //total questions
 
     //showing result after completion of exam/quiz.
