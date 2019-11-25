@@ -109,7 +109,7 @@ if (@$_GET['q']=='quizre' && @$_GET['step']==25) {
     }
 
 // ADD EXAM
-if (@$_GET['q']=='addquiz') {
+if (@$_GET['q']== 'addquiz') {
     
     $name = $_POST['name']; //name or title of the exam
     $name = ucwords(strtolower($name)); //make a string lower case, then Uppercase the first char

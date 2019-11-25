@@ -43,17 +43,17 @@ include_once('dbcon.php');
                     session_start();
 
                   if (!(isset($_SESSION['email']))) {
-                    header("location:");
+                    header("location:index.php");
                     //index.php
                   }
                   else {
                     $name = $_SESSION['name'];
                     $email = $_SESSION['email'];
-
+                    include('dbcon.php');
                     echo '<span class="pull-right top title1">
                     <span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    >&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span><a href="account.php?q=1" class="log log1">'.$name.'</a>
-                    &nbsp;&nbsp;<a href="" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+                    &nbsp;&nbsp;&nbsp;&nbsp;Hello,</span><a href="account.php?q=1" class="log log1">'.$name.'</a>
+                    &nbsp;&nbsp;<a href="logout.php?q=index.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
                    //(logout.php?q=index.php)here the value of q = index.php this value goes to logout.php
                   }
                   ?>
@@ -82,7 +82,7 @@ include_once('dbcon.php');
         <li <?php if(@$_GET['q']==1) echo 'class="active"'; ?> ><a href="account.php?q=1"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home<span class="sr-only">(current)</span></a></li>
         <li <?php if(@$_GET['q']==2) echo 'class="active"'; ?> ><a href="account.php?q=2"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;History</a></li>
 		<li <?php if(@$_GET['q']==3) echo 'class="active"'; ?> ><a href="account.php?q=3"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;Ranking</a></li>
-		<li class="pull-right"> <a href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
+		<li class="pull-right"> <a href="logout.php?q=index.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
                         <!-- logout.php?q=index.php -->
 		</ul>
             

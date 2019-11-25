@@ -31,10 +31,6 @@ CREATE TABLE `answer` (     -- contains all the correct ans according to ques.
 
 -- insert data for table `answer`
 
-INSERT INTO `answer` (`qid`, `ansid`) VALUES
-('',''),
-('',''),
-('','');
 
 -- ---------------------------------------------------------
 
@@ -48,9 +44,7 @@ CREATE TABLE `options` (   -- contains all the options to print in each question
 
 -- inserting data for table 'option'
 
-INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
-('','',''),
-('','','');
+
 
 -- ----------------------------------------------------------------
 
@@ -66,8 +60,6 @@ CREATE TABLE `questions` (   -- contains all the ques of diff topic
 
 -- inserting data into table 'questions'
 
-INSERT INTO `questions` (`eid`,`qid`,`qns`,`choice`,`sn`) VALUES 
-('','','',0,0);
 
 -- ----------------------------------------------------------------------
 
@@ -85,8 +77,7 @@ CREATE TABLE `exam` (   -- contains all the exam topic wise
 
 -- inserting data for table `exam`
 
-INSERT INTO `exam` (`eid`,`title`,`right`,`wrong`,`total`,`time`,`date`) VALUES
-('','',0,0,0,0,'');
+
 
 -- ---------------------------------------------------------------------
 
@@ -103,8 +94,7 @@ create table `rank` (
 
 -- insert data for table `rank`
 
-INSERT INTO `rank` (`email`, `score`, `time`) VALUES
-('',0,'');
+
 
 -- -----------------------------------------------------------------
 
@@ -122,8 +112,7 @@ CREATE TABLE `history` (
 
 -- inserting data into history table
 
-INSERT INTO `history` (`email`,`eid`,`score`,`quescount`,`right`,`wrong`,`date`) values 
-('','','','','','','');
+
 
  -- ------------------------------------------------------------------------------------
 
@@ -140,8 +129,6 @@ create table `user` (
 
 -- insert data for table `user`
  
-INSERT INTO `user` (`name`, `gender`, `college`, `email`, `mob`, `password`) VALUES
-('','','','',0,'');
 
 
 -- ----------------------------------------------------------------------

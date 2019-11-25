@@ -50,7 +50,7 @@ else {  //if yes, then print the name of the user in dash.php
 echo '<span class="pull-right top title1">
             <span class="log1">
             <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-            Hello, <a href="#"> class="log log1">'.$name.'</a>&nbsp;&nbsp;<a href="logout.php?" class="log">
+            Hello, <a href="#" class="log log1">'.$name.'</a>&nbsp;&nbsp;<a href="logout.php?q=index.php" class="log">
             <span class="glyphicon glyphicon-log-out"></span>&nbsp;Sign Out</a></span>';
 }
 ?>
@@ -84,7 +84,7 @@ echo '<span class="pull-right top title1">
             <li><a href="dash.php?q=4"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;Remove Exam</a></li>
 			
           </ul>
-        </li><li class="pull-right"> <a href=""><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
+        </li><li class="pull-right"> <a href="logout.php?q=index.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Signout</a></li>
 		
       </ul>
           </div>

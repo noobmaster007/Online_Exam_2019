@@ -2,6 +2,7 @@
 include_once('dbcon.php');
 
 $name = $_POST['name'];
+$name = ucwords(strtolower($name));
 $gender = $_POST['gender'];
 $email = $_POST['email'];
 $college = $_POST['college'];
@@ -30,13 +31,15 @@ $password = md5($password);
 
 $sql = "INSERT INTO user VALUES ('$name','$gender','$college','$email','$mob','$password')";
 $result = mysqli_query($connection,$sql);
-session_start();
+
 if ($result) {
-    $_SESSION['email']=$email; //checks whether the email is register before or not.
+    session_start();
+    $_SESSION["email"]=$email; //checks whether the email is register before or not.
     //if not then redirect to account page, and stores the data into db
-    header('location:account.php?q=1');
+    $_SESSION["name"]=$name;
+    header("location:account.php?q=1");
 }
 else { //if yes then show up a warning! 
-    header('location:index.php?w=Email Already Registered!');
+    header("location:index.php?w=Email Already Registered!");
 }
 ?>

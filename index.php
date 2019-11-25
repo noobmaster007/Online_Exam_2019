@@ -42,7 +42,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
          <h4 class="modal-title"><span style="color:blue;font-family:'typo' "> User Log In</span></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" action="" method="POST">
+        <form class="form-horizontal" action="login.php?q=index.php" method="POST">
 <fieldset>
 
 
@@ -280,7 +280,7 @@ if (@$_GET['w']) {
 <div class="row">
 <div class="col-md-3"></div>
 <div class="col-md-6">
-<form role="form" method="post" action="">
+<form role="form" method="post" action="admin.php?q=index.php">
 <div class="form-group">
 <input type="email" name="uname" maxlength="50"  placeholder="Admin user id" class="form-control" required/> 
 </div>
