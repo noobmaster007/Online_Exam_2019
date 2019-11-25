@@ -22,10 +22,10 @@ if ($rows==1) {
         //they act as a cookies, remembers the credential data on the localserver.
     }
     
-    $_SESSION['name']='admin';
-    $_SESSION['password']='admin';
-    $_SESSION['email']=$email;
-    header('location:dash.php?q=0');
+    $_SESSION["name"]='Admin';
+    // $_SESSION["key"]='admin';
+    $_SESSION["email"]=$email;
+    header("location:dash.php?q=0");
 }
 else { //if the login credential doesn't match, then this will execute.
     header("location:$ref?w=Warning = Access Denied!");
