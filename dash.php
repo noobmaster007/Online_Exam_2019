@@ -226,7 +226,7 @@ if (@$_GET['q']==1) {
       $name = $row['name'];
       $mob = $row['mob'];
       $gender = $row['gender'];
-      $email = $row['email'];
+      $email = $row['email']; //it shows and transferred into update page for deletion.
       $college = $row['college'];
 
       echo '<tr>

@@ -2,7 +2,7 @@
 include('dbcon.php');
 session_start();
 
-//start quiz
+//start exam
 //this update page is hidden from a user.
 if (@$_GET['q']='quiz' && @$_GET['step']==2) {
     //get the values from the url
@@ -178,5 +178,19 @@ if (@$_GET['q']=='addqns') {    //get the value from dash.php, when youre about 
         $quesans = mysqli_query($connection,"INSERT INTO answer VALUES ('$qid','$ansid')");
     }
     header("location:dash.php?q=0");    //this will redirect to home.
+}
+
+
+// DELETE USER
+if (@$_GET['demail']) { //gets the email from url
+    $demail = @$_GET['demail']; //user's email id
+    //actually this email gets from the user table, in dash page. when admin is going to delete an user
+    // it will fetch the email in demail, then deletes the user from several table. not just from user table
+    // 
+    $r1 = mysqli_query($connection,"DELETE FROM rank WHERE email='$demail'")or die('Error');
+    $r2 = mysqli_query($connection,"DELETE FROM history WHERE email='$demail'")or die('Error');
+    $r3 = mysqli_query($connection,"DELETE FROM user WHERE email='$demail'")or die('Error');
+
+    header("location:dash.php?q=1");
 }
 ?>
