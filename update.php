@@ -1,6 +1,7 @@
 <?php
 include('dbcon.php');
 session_start();
+$email = $_SESSION['email'];
 
 //start exam
 //this update page is hidden from a user.
