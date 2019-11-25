@@ -171,8 +171,7 @@ if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START
   $total = @$_GET['t']; //fetched from start button url
 
   //fetch eid of the questions of different topic
-  $quesquery = "SELECT * FROM questions WHERE eid = '$eid' and sn = '$sn'";
-  $q = mysqli_query($connection,$quesquery);
+  $q = mysqli_query($connection,"SELECT * FROM questions WHERE eid = '$eid' and sn = '$sn'");
 
   echo '<div class="panel" style="margin:5%">';
 
@@ -184,8 +183,8 @@ if (@$_GET['q']=='quiz' && @$_GET['step'] == 2) { //q=quiz and step=2 from START
    echo '<b><Questions &nbsp;'.$sn.'&nbsp;::<br>'.$qns.'</b><br><br>';
   }
 
-  $optionquery = "SELECT * FROM options WHERE qid = '$qid'";
-  $q = mysqli_query($connection,$optionquery);
+
+  $q = mysqli_query($connection,"SELECT * FROM options WHERE qid = '$qid' ");
   echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&t='.$total.'&qid='.$qid.'" method="POST" class="form-horizontal">
   <br>';  //form for select option
 

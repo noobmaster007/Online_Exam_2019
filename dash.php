@@ -400,7 +400,7 @@ if (@$_GET['q']==3 && @$_GET['step']==2) {  //this gets the value from update pa
 <?php
 if (@$_GET['q']==4) {   //check the url whether matches or not
 
-  $result = mysqli_query($connection,"SELECT * FROM exam ORDER BY DATE DESC")or die('Error');
+  $result = mysqli_query($connection,"SELECT * FROM exam ORDER BY date DESC")or die('Error');
   //fetch the exams order by date, means most recent exam placed on top
   echo '<div class="panel">
           <div class="table-responsive">
@@ -416,10 +416,10 @@ if (@$_GET['q']==4) {   //check the url whether matches or not
 
     $c=1; //serial no.
     while ($row=mysqli_fetch_array($result)) {
-      $title = row['title'];
-      $total = row['total'];
-      $right = row['right'];  //marks of each question
-      $eid = row['eid'];
+      $title = $row['title'];
+      $total = $row['total'];
+      $right = $row['right'];  //marks of each question
+      $eid = $row['eid'];
 
       echo '<tr>
             <td>'.$c++.'</td>
